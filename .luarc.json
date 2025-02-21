@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "init",
+        "opts",
+        "bufferline",
+        "left_trunc_marker",
+        "shortcut_type",
+        "ibl",
+        "█"
+    ]
+}
