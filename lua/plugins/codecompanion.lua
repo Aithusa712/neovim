@@ -9,17 +9,23 @@ return {
     require('codecompanion').setup {
       strategies = {
         chat = {
-          adapter = 'anthropic',
+          adapter = 'openai',
         },
         inline = {
-          adapter = 'anthropic',
+          adapter = 'openai',
         },
       },
       adapters = {
-        anthropic = function()
-          return require('codecompanion.adapters').extend('anthropic', {
+        openai = function()
+          return require('codecompanion.adapters').extend('openai', {
+            name = 'gpt-4o-mini',
+            schema = {
+              model = {
+                default = 'gpt-4o-mini',
+              },
+            },
             env = {
-              api_key = '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',
+              api_key = 'cmd: gpg --batch --quiet --decrypt /home/kim/keys/openai_key.asc',
             },
           })
         end,

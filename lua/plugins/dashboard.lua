@@ -16,7 +16,7 @@ return {
               icon_hl = '@variable',
               desc = 'Files',
               group = 'Label',
-              action = 'Telescope find_files',
+              action = 'Neotree source=filesystem reveal=true position=current',
               key = 'f',
             },
           },
