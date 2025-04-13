@@ -1,0 +1,75 @@
+return {
+  -- Add hover.nvim to the list of plugins
+  {
+    "lewis6991/hover.nvim",
+    config = function()
+      require("hover").setup {
+        init = function()
+          -- Require providers
+          require("hover.providers.lsp")
+          -- Uncomment other providers as needed
+          -- require('hover.providers.gh')
+          -- require('hover.providers.gh_user')
+          -- require('hover.providers.jira')
+          require('hover.providers.dap')
+          -- require('hover.providers.fold_preview')
+          require('hover.providers.diagnostic')
+          -- require('hover.providers.man')
+          -- require('hover.providers.dictionary')
+        end,
+        preview_opts = {
+          border = 'single'
+        },
+        preview_window = false,
+        title = true,
+        mouse_providers = {
+          'LSP'
+        },
+        mouse_delay = 1000
+      }
+
+      -- Setup keymaps
+      vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+      vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+      vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, { desc = "hover.nvim (previous source)" })
+      vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, { desc = "hover.nvim (next source)" })
+
+
+       -- Function to automatically show hover for functions
+      local function auto_hover()
+        local params = vim.lsp.util.make_position_params()
+
+        vim.lsp.buf_request(0, 'textDocument/documentSymbol', params, function(err, result, ctx, _)
+          if err or not result then return end
+
+          local bufnr = ctx.bufnr
+          local cursor_pos = params.position
+
+          for _, symbol in ipairs(result) do
+            if symbol.kind == vim.lsp.protocol.SymbolKind.Function or symbol.kind == vim.lsp.protocol.SymbolKind.Method then
+              local range = symbol.range
+              if cursor_pos.line >= range.start.line and cursor_pos.line <= range['end'].line then
+                if cursor_pos.character >= range.start.character and cursor_pos.character <= range['end'].character then
+                  require("hover").hover()
+                  break
+                end
+              end
+            end
+          end
+        end)
+      end
+
+      -- Auto hover on CursorHold for functions and methods
+      vim.api.nvim_create_autocmd("CursorHold", {
+        pattern = "*",
+        callback = auto_hover,
+      })
+
+      -- Mouse support
+      vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
+      vim.o.mousemoveevent = true
+    end,
+    event = "CursorHold",  -- Lazy load on CursorHold event
+  }
+}
+

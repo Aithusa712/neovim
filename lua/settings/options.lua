@@ -42,3 +42,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Set up an autocmd to trigger LSP hover on CursorHold
+
