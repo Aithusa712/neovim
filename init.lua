@@ -1,5 +1,5 @@
-require 'settings.keymaps'
 require 'settings.options'
+require 'settings.keymaps'
 
 -- NOTE: [[ Install `lazy.nvim` plugin manager ]]
 
