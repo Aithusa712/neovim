@@ -3,8 +3,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.indent_blankline_filetype_exclude = { 'dashboard' }
+--vim.g.python3_host_prog = '~/.venv/bin/python'
 
+vim.g.indent_blankline_filetype_exclude = { 'dashboard' }
 -- NOTE: [[ Setting options ]]
 -- 	See `:help vim.opt`
 -- 	See`:help option-list`
@@ -45,3 +46,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Set up an autocmd to trigger LSP hover on CursorHold
 
+vim.diagnostic.config { virtual_lines = false }
+vim.diagnostic.config { virtual_text = false }
