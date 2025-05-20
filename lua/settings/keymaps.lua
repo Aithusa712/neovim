@@ -1,4 +1,5 @@
 -- NOTE: [[ Basic Keymaps ]]
+vim.keymap.set('v', '<leader>cp', '<cmd>CodeCompanion<CR>', { desc = 'Code [C]ompanion [V]isual' })
 
 --  See `:help vim.keymap.set()`
 vim.keymap.set('n', '<leader>tn', '<cmd>Telescope colorscheme<CR>', { desc = 'Open colorschemes' })
@@ -23,8 +24,13 @@ vim.keymap.set('n', '<Down>', '<cmd>wincmd j<CR>')
 
 vim.keymap.set('n', '<S-Up>', '<cmd>resize -2<CR>')
 vim.keymap.set('n', '<S-Down>', '<cmd>resize +2<CR>')
-vim.keymap.set('n', '<S-Left>', '<cmd>vertical resize +2<CR>')
-vim.keymap.set('n', '<S-Right>', '<cmd>vertical resize -2<CR>')
+vim.keymap.set('n', '<S-right>', '<cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<S-left>', '<cmd>vertical resize -2<CR>')
+
+
+vim.keymap.set('n', '<leader>cc', '<cmd>CodeCompanionChat toggle<CR>', { desc = 'Code [C]ompanion [C]hat' })
+vim.keymap.set('v', '<leader>cv', '<cmd>CodeCompanion<CR>', { desc = 'Code [C]ompanion [V]isual' })
+vim.keymap.set('n', '<leader>cp', '<cmd>CodeCompanionActions<CR>', { desc = 'Code [C]ompanion Action [P]allete' })
 
 -- NOTE: 
 

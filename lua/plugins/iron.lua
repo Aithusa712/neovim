@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/plugins/iron.lua
+--~/.config/nvim/lua/plugins/iron.lua
 return {
   {
     'Vigemus/iron.nvim',
