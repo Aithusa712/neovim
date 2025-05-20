@@ -16,11 +16,15 @@ vim.keymap.set('n', 'g/', '<cmd>bd<CR>', { desc = 'Close current buffer' }) -- C
 vim.keymap.set('n', '<A-t>', '<cmd>terminal<CR>') --open terminal
 
 -- Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<Left>', '<cmd>wincmd h<CR>')
+vim.keymap.set('n', '<Right>', '<cmd>wincmd l<CR>')
+vim.keymap.set('n', '<Up>', '<cmd>wincmd k<CR>')
+vim.keymap.set('n', '<Down>', '<cmd>wincmd j<CR>')
 
+vim.keymap.set('n', '<S-Up>', '<cmd>resize -2<CR>')
+vim.keymap.set('n', '<S-Down>', '<cmd>resize +2<CR>')
+vim.keymap.set('n', '<S-Left>', '<cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<S-Right>', '<cmd>vertical resize -2<CR>')
 
 -- NOTE: 
 
