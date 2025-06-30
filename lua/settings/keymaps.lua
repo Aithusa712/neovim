@@ -25,7 +25,7 @@ vim.keymap.set('n', '<Down>', '<cmd>wincmd j<CR>')
 vim.keymap.set('n', '<S-Up>', '<cmd>resize -2<CR>')
 vim.keymap.set('n', '<S-Down>', '<cmd>resize +2<CR>')
 vim.keymap.set('n', '<S-right>', '<cmd>vertical resize +2<CR>')
-vim.keymap.set('n', '<S-left>', '<cmd>vertical resize -2<CR>')
+
 
 
 vim.keymap.set('n', '<leader>cc', '<cmd>CodeCompanionChat toggle<CR>', { desc = 'Code [C]ompanion [C]hat' })
@@ -37,7 +37,7 @@ vim.keymap.set('n', '<leader>cp', '<cmd>CodeCompanionActions<CR>', { desc = 'Cod
 -- vim.keymap.set('', 'C-Ia' )
 
 -- Map Ctrl + t to toggle a terminal with specific options
-vim.keymap.set('n', '<C-/>', '<cmd>ToggleTerm size=30 direction=float name=Terminal<CR>', { silent = true })
+vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm size=30 direction=float name=Terminal<CR>', { silent = true })
 
 -- I want a keymap to toggle between markdown and py files
 vim.keymap.set('n', '<leader>tm', function()
@@ -48,45 +48,3 @@ vim.keymap.set('n', '<leader>tm', function()
     vim.cmd('set ft=markdown')
   end
 end, { desc = 'Toggle between markdown and python filetypes' })
-
-
-vim.api.nvim_create_user_command('NbConvertToPy', function()
-  local current_file = vim.fn.expand('%:p')
-  if current_file:match('%.ipynb$') then
-    local cmd = 'jupyter nbconvert --to script ' .. vim.fn.shellescape(current_file)
-    local result = vim.fn.system(cmd)
-    if vim.v.shell_error == 0 then
-      print("Notebook converted to Python script successfully!")
-      local py_file = current_file:gsub('%.ipynb$', '.py')
-      vim.cmd('edit ' .. vim.fn.fnameescape(py_file)) -- Open the converted Python file
-    else
-      print("Error during conversion: " .. result)
-    end
-  else
-    print("Current file is not a Jupyter Notebook (.ipynb).")
-  end
-end, {})
-
--- Command to convert Python script to Jupyter Notebook
-vim.api.nvim_create_user_command('PyConvertToNb', function()
-  local current_file = vim.fn.expand('%:p')
-  if current_file:match('%.py$') then
-    local cmd = 'jupytext --to notebook ' .. vim.fn.shellescape(current_file)
-    local result = vim.fn.system(cmd)
-    if vim.v.shell_error == 0 then
-      print("Python script converted to Jupyter Notebook successfully!")
-      local nb_file = current_file:gsub('%.py$', '.ipynb')
-      vim.cmd('edit ' .. vim.fn.fnameescape(nb_file)) -- Open the converted Notebook file
-    else
-      print("Error during conversion: " .. result)
-    end
-  else
-    print("Current file is not a Python script (.py).")
-  end
-end, {})
-
--- Map <leader>tc to convert Notebook to Python script
-vim.keymap.set('n', '<leader>tc', ':NbConvertToPy<CR>', { noremap = true, silent = true })
-
--- Map <leader>tn to convert Python script to Notebook
-vim.keymap.set('n', '<leader>tn', ':PyConvertToNb<CR>', { noremap = true, silent = true })
