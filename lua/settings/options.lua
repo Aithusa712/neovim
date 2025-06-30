@@ -33,6 +33,7 @@ vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.opt.cursorlineopt = 'both' --screenline
+vim.opt.cmdheight = 1
 
 --NOTE: [[ Basic Autocommands ]]
 

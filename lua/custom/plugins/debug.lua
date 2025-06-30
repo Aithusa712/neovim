@@ -1,11 +1,4 @@
 -- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
-
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -67,7 +60,54 @@ return {
       --    Feel free to remove or use ones that you like more! :)
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      mappings = {
+        -- Use a table to apply multiple mappings
+        expand = { '<CR>', '<2-LeftMouse>' },
+        open = 'o',
+        remove = 'd',
+        edit = 'e',
+        repl = 'r',
+        toggle = 't',
+      },
+      element_mappings = {},
+      expand_lines = vim.fn.has 'nvim-0.7' == 1,
+      force_buffers = true,
+      layouts = {
+        {
+          -- You can change the order of elements in the sidebar
+          elements = {
+            -- Provide IDs as strings or tables with "id" and "size" keys
+            {
+              id = 'scopes',
+              size = 0.25, -- Can be float or integer > 1
+            },
+            { id = 'breakpoints', size = 0.25 },
+            { id = 'stacks', size = 0.25 },
+            { id = 'watches', size = 0.25 },
+          },
+          size = 40,
+          position = 'left', -- Can be "left" or "right"
+        },
+        {
+          elements = {
+            'repl',
+            'console',
+          },
+          size = 10,
+          position = 'bottom', -- Can be "bottom" or "top"
+        },
+      },
+      floating = {
+        max_height = nil,
+        max_width = nil,
+        border = 'single',
+        mappings = {
+          ['close'] = { 'q', '<Esc>' },
+        },
+      },
       controls = {
+        enabled = vim.fn.exists '+winbar' == 1,
+        element = 'repl',
         icons = {
           pause = '⏸',
           play = '▶',
@@ -79,6 +119,11 @@ return {
           terminate = '⏹',
           disconnect = '⏏',
         },
+      },
+      render = {
+        max_type_length = nil, -- Can be integer or nil.
+        max_value_lines = 100, -- Can be integer or nil.
+        indent = 1,
       },
     }
 
