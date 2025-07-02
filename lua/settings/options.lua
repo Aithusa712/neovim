@@ -1,5 +1,8 @@
 -- NOTE: [[ Leader Key ]]
-
+--Add Syntax highlight for hyprland.config files
+vim.filetype.add {
+  pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+}
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed and selected in the terminal

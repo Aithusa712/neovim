@@ -35,6 +35,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
     },
+
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'

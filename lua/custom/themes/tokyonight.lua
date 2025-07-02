@@ -10,12 +10,16 @@ return {
       transparent = true,
       styles = {
         sidebars = 'transparent',
-        floats = 'transparent',
+        -- sidebars = 'dark',
+        floats = 'dark',
+        comments = { italic = true },
+        keywords = { italic = true },
       },
+      lualine_bold = false,
       on_highlights = function(hl, c)
         hl.Comment = {
           fg = '#565f89', -- bright green; replace with your preferred hex
-          italic = false, -- or true if you want italics
+          italic = true, -- or true if you want italics
         }
       end,
     },

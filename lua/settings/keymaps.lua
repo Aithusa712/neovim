@@ -25,14 +25,18 @@ vim.keymap.set('n', '<Down>', '<cmd>wincmd j<CR>')
 vim.keymap.set('n', '<S-Up>', '<cmd>resize -2<CR>')
 vim.keymap.set('n', '<S-Down>', '<cmd>resize +2<CR>')
 vim.keymap.set('n', '<S-right>', '<cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<S-left>', '<cmd>vertical resize -2<CR>')
 
-
+vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code action' })
 
 vim.keymap.set('n', '<leader>cc', '<cmd>CodeCompanionChat toggle<CR>', { desc = 'Code [C]ompanion [C]hat' })
 vim.keymap.set('v', '<leader>cv', '<cmd>CodeCompanion<CR>', { desc = 'Code [C]ompanion [V]isual' })
 vim.keymap.set('n', '<leader>cp', '<cmd>CodeCompanionActions<CR>', { desc = 'Code [C]ompanion Action [P]allete' })
 
--- NOTE: 
+-- NOTE:  Copilot
+
+vim.keymap.set('n', '<leader>cn', '<cmd>Copilot disable<CR>', { desc = '[C]opilot [D]isable' })
+vim.keymap.set('n', '<leader>co', '<cmd>Copilot enable<CR>', { desc = '[C]opilot [E]nable' })
 
 -- vim.keymap.set('', 'C-Ia' )
 
@@ -43,8 +47,10 @@ vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm size=30 direction=float name=Termi
 vim.keymap.set('n', '<leader>tm', function()
   local filetype = vim.bo.filetype
   if filetype == 'markdown' then
-    vim.cmd('set ft=python')
+    vim.cmd 'set ft=python'
   elseif filetype == 'python' then
-    vim.cmd('set ft=markdown')
+    vim.cmd 'set ft=markdown'
   end
 end, { desc = 'Toggle between markdown and python filetypes' })
+
+vim.keymap.set('n', '<leader>ne', '<cmd>Noice all<CR>', { desc = 'Noice Messages' })

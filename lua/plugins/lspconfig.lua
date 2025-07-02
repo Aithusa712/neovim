@@ -3,7 +3,8 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      { 'williamboman/mason.nvim', config = true },
+      -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -21,6 +22,7 @@ return {
         },
       },
       { 'Bilal2453/luvit-meta', lazy = true },
+      { 'saghen/blink.cmp' },
     },
     config = function()
       local function toggle_inline_diagnostics()
@@ -85,8 +87,8 @@ return {
 
       -- Capabilities setup for LSP client
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
+      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- LSP server configurations
       local servers = {
         lua_ls = {
