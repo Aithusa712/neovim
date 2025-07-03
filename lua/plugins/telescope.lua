@@ -17,75 +17,77 @@ return {
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
 
-  opts = {
-    defaults = {
-      layout_strategy = 'vertical',
-      layout_config = {
-        bottom_pane = {
-          height = 5,
-          preview_cutoff = 120,
-          prompt_position = 'top',
-        },
-        center = {
-          height = 0.4,
-          preview_cutoff = 40,
-          prompt_position = 'top',
-          width = 0.5,
-        },
-        cursor = {
-          height = 0.9,
-          preview_cutoff = 40,
-          width = 0.8,
-        },
-        horizontal = {
-          height = 0.9,
-          preview_cutoff = 120,
-          prompt_position = 'bottom',
-          width = 0.8,
-        },
-        vertical = {
-          height = 0.9,
-          preview_cutoff = 40,
-          prompt_position = 'bottom',
-          width = 0.8,
-        },
-      },
-    },
-    pickers = {
-      buffers = {
-        theme = 'ivy',
-        initial_mode = 'normal',
-        layout_config = {
-          bottom_pane = {
-            height = 10,
-            preview_cutoff = 40,
-            prompt_position = 'top',
-          },
-        },
-      },
-      diagnostics = {
-        theme = 'ivy',
-        initial_mode = 'normal',
-        layout_config = {
-          bottom_pane = {
-            height = 10,
-            preview_cutoff = 20,
-            prompt_position = 'top',
-          },
-        },
-      },
-    },
-    extensions = {
-      ['ui-select'] = {
-        require('telescope.themes').get_dropdown(), --.get_dropdown .get_cursor .get_ivy
-      },
-    },
-  },
-  config = function(_, opts)
-    require('telescope').setup(opts)
+  opts = {},
+  config = function()
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+
+    require('telescope').setup {
+      defaults = {
+        layout_strategy = 'vertical',
+        layout_config = {
+          bottom_pane = {
+            height = 5,
+            preview_cutoff = 120,
+            prompt_position = 'top',
+          },
+          center = {
+            height = 0.4,
+            preview_cutoff = 40,
+            prompt_position = 'top',
+            width = 0.5,
+          },
+          cursor = {
+            height = 0.9,
+            preview_cutoff = 40,
+            width = 0.8,
+          },
+          horizontal = {
+            height = 0.9,
+            preview_cutoff = 120,
+            prompt_position = 'bottom',
+            width = 0.8,
+          },
+          vertical = {
+            height = 0.9,
+            preview_cutoff = 40,
+            prompt_position = 'bottom',
+            width = 0.8,
+          },
+        },
+      },
+      pickers = {
+        buffers = {
+          theme = 'ivy',
+          initial_mode = 'normal',
+          layout_config = {
+            bottom_pane = {
+              height = 10,
+              preview_cutoff = 40,
+              prompt_position = 'top',
+            },
+          },
+        },
+        diagnostics = {
+          theme = 'ivy',
+          initial_mode = 'normal',
+          layout_config = {
+            bottom_pane = {
+              height = 10,
+              preview_cutoff = 20,
+              prompt_position = 'top',
+            },
+          },
+        },
+      },
+      extensions = {
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown(), --.get_dropdown .get_cursor .get_ivy
+        },
+      },
+    }
+
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
