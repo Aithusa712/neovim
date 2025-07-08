@@ -11,8 +11,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }) -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 
 -- NOTE: [[Buffers]]
-vim.keymap.set('n', 'gh', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' }) -- Go to prev buffer
-vim.keymap.set('n', 'gg', '<cmd>bnext<CR>', { desc = 'Go to next buffer' }) -- Go to next buffer
+vim.keymap.set('n', 'gj', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' }) -- Go to prev buffer
+vim.keymap.set('n', 'gk', '<cmd>bnext<CR>', { desc = 'Go to next buffer' }) -- Go to next buffer
 vim.keymap.set('n', 'g/', '<cmd>bd<CR>', { desc = 'Close current buffer' }) -- Close Buffer
 vim.keymap.set('n', '<A-t>', '<cmd>terminal<CR>') --open terminal
 

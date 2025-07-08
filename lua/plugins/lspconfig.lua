@@ -86,7 +86,7 @@ return {
       })
 
       -- Capabilities setup for LSP client
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- LSP server configurations
@@ -106,7 +106,11 @@ return {
       require('mason').setup()
       local ensure_installed = vim.tbl_keys(servers)
       vim.list_extend(ensure_installed, { 'stylua' })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          'stylua',
+        },
+      }
 
       -- Configure Mason LSP config setup
       require('mason-lspconfig').setup {
