@@ -14,14 +14,16 @@ return {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    {
+      'nvim-tree/nvim-web-devicons',
+      enabled = vim.g.have_nerd_font
+    },
   },
 
   opts = {},
   config = function()
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
+
 
     require('telescope').setup {
       defaults = {
@@ -82,11 +84,23 @@ return {
         },
       },
       extensions = {
-        ['ui-select'] = {
-          require('telescope.themes').get_dropdown(), --.get_dropdown .get_cursor .get_ivy
-        },
+        ['ui-select'] =
+            require('telescope.themes').get_ivy {
+              initial_mode = 'normal',
+              layout_config = {
+                bottom_pane = {
+                  height          = 10,
+                  preview_cutoff  = 20,
+                  prompt_position = 'bottom',
+                },
+              },
+            },
+
       },
+
     }
+    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
