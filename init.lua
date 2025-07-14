@@ -29,7 +29,8 @@ require('lazy').setup({
   -- NOTE:  THEMES
 
   --require 'custom.themes.dracula',
-  require 'custom.themes.tokyonight',
+  -- require 'custom.themes.tokyonight',
+  require 'custom.themes.kanagawa',
 
   { import = 'plugins' }, -- import from plugin folder
 }, {
