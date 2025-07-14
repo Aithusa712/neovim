@@ -24,7 +24,7 @@ return {
         end,
         desc = 'Debug: Set Breakpoint',
       },
-      { '<F7>', dapui.toggle, desc = 'Debug: See last session result.' },
+      { '<leader>dt', dapui.toggle, desc = 'Debug: See last session result.' },
       unpack(keys),
     }
   end,
