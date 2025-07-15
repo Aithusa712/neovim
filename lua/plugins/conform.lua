@@ -35,7 +35,7 @@ return {
 
   -- 3) Mason-Conform bridge: auto-register Mason-installed formatters
   {
-    'zapling/mason-conform',
+    'LittleEndianRoot/mason-conform',
     dependencies = {
       'williamboman/mason.nvim',
       'stevearc/conform.nvim',

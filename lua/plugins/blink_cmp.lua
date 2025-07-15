@@ -54,15 +54,29 @@ return {
       documentation = {
         auto_show = true
       },
-      blink = {
-        enabled = true
-      }
+      -- blink = {
+      --   enabled = true
+      -- }
     },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = {
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+        --"jupynium"
+      },
+      -- providers = {
+      --   jupynium = {
+      --     name = "Jupynium",
+      --     module = "jupynium.blink_cmp",
+      --     -- Consider higher priority than LSP
+      --     score_offset = 100,
+      --   },
+      -- },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
