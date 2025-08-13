@@ -35,7 +35,9 @@ vim.opt.clipboard = 'unnamedplus' --  See `:help 'clipboard'` -- For Linux
 --   },
 --   cache_enabled = 0,
 -- }
+-- vim.opt.clipboard:append({ "unnamedplus" })
 
+-- End of Windows WSL clipboard block
 vim.opt.breakindent = true -- Enable break indent
 vim.opt.undofile = true -- Save undo history
 vim.opt.ignorecase = true -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
