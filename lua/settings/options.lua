@@ -23,6 +23,10 @@ vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for 
 vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
 vim.opt.clipboard = 'unnamedplus' --  See `:help 'clipboard'` -- For Linux
 
+-- Wsl solution below, makes autocomplete sluggish. 
+-- Alternative is to install win32yank,add it to your window's env var and 
+-- keep opt.clipboard = 'unamedplus'
+
 -- vim.g.clipboard = { -- For Windows WSL
 --   name = 'WslClipboard',
 --   copy = {
