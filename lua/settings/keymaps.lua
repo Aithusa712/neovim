@@ -1,6 +1,20 @@
 -- NOTE: [[ Basic Keymaps ]]
 vim.keymap.set('v', '<leader>cp', '<cmd>CodeCompanion<CR>', { desc = 'Code [C]ompanion [V]isual' })
 
+-- Navigation
+-- word-left / word-right(end) in Normal mode
+-- vim.keymap.set('n', '<C-Left>',  'b', {silent=true})
+-- vim.keymap.set('n', '<C-Right>', 'e', {silent=true})  -- use 'w' if you prefer start of next word
+
+-- same in Insert mode
+-- vim.keymap.set('i', '<C-Left>',  '<C-o>b', {silent=true})
+-- vim.keymap.set('i', '<C-Right>', '<C-o>w<C-o>e', {silent=true}) -- or '<C-o>w'
+
+-- and in Visual mode
+-- vim.keymap.set('x', '<C-Left>',  'b', {silent=true})
+-- vim.keymap.set('x', '<C-Right>', 'e', {silent=true})
+
+
 --  See `:help vim.keymap.set()`
 vim.keymap.set('n', '<leader>tn', '<cmd>Telescope colorscheme<CR>', { desc = 'Open colorschemes' })
 vim.keymap.set('n', '<leader>nr', '<cmd>setl rnu!<CR>', { desc = 'Set Relative Number Line' })

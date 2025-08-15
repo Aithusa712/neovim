@@ -101,7 +101,9 @@ return {
       -- Initialize Mason and ensure tools are installed
       require('mason').setup()
       require('mason-tool-installer').setup {
-        ensure_installed = { 'stylua' },
+        ensure_installed = {
+          'stylua',
+        },
       }
       require('mason-lspconfig').setup {
         ensure_installed       = vim.tbl_keys(servers),
