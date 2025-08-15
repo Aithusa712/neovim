@@ -109,52 +109,5 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config']     = dapui.close
-    -- Adapter executable (from Mason)
-    local js                                              = vim.fn.stdpath('data') ..
-        '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js'
-
-    -- Use absolute node path to avoid nvm/PATH issues
-    local node                                            = vim.fn.exepath('node')
-    -- Register adapters (both point to the same js-debug server)
-    dap.adapters['pwa-node']                              = {
-      type = 'server',
-      host = '127.0.0.1',
-      port = '8123',
-      executable = { 
-        command = "js-debug-adapter" },
-    }
-
-    -- dap.adapters['pwa-chrome']                            = dap.adapters['pwa-node']
-    --
-    local js_based_languages                              = { 'javascript', 'typescript', 'javascriptreact',
-      'typescriptreact' }
-
-    for _, language in ipairs(js_based_languages) do
-      dap.configurations[language] = {
-        {
-          type = 'pwa-node',
-          request = 'launch',
-          name = 'Launch file',
-          program = '${file}',
-          cwd = '${workspaceFolder}',
-          runtimeExecutable = "Node"
-        },
-        -- {
-        --   type = 'pwa-node',
-        --   request = 'attach',
-        --   name = 'Attach',
-        --   processId = require('dap.utils').pick_process,
-        --   cwd = '${workspaceFolder}',
-        -- },
-        -- {
-        --   type = 'pwa-chrome',
-        --   request = 'launch',
-        --   name = 'Start Chrome on localhost',
-        --   url = 'http://localhost:3000',
-        --   webRoot = '${workspaceFolder}',
-        --   -- userDataDir = '${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir', -- optional
-        -- },
-      }
-    end
   end,
 }
