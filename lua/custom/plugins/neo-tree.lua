@@ -13,11 +13,12 @@ return {
   lazy = false, -- neo-tree will lazily load itself
   cmd = 'Neotree',
   keys = {
-    { '<leader>e', ':Neotree toggle<CR>', desc = 'NeoTree' },
+    { '<leader>e', ':Neotree toggle<CR>', desc = 'NeoTree',  },
   },
   opts = {
     filesystem = {
       window = {
+        width = 18,
         mappings = {
           ['\\'] = 'close_window',
         },
