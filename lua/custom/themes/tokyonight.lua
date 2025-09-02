@@ -3,13 +3,13 @@ return {
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme 'tokyonight-night'
       vim.cmd.hi 'Comment gui=none'
     end,
     opts = {
-      transparent = true,
+      -- transparent = true,
       styles = {
-        sidebars = 'transparent',
+        -- sidebars = 'transparent',
         -- sidebars = 'dark',
         floats = 'dark',
         comments = { italic = true },

@@ -29,9 +29,10 @@ require('lazy').setup({
   -- NOTE:  THEMES
 
   --require 'custom.themes.dracula',
-  -- require 'custom.themes.tokyonight',
-  require 'custom.themes.kanagawa',
-
+  require 'custom.themes.tokyonight',
+  -- require 'custom.themes.kanagawa',
+  -- require 'custom.themes.onedark',
+  -- vim.cmd("colorscheme unokai"),
   { import = 'plugins' }, -- import from plugin folder
 }, {
   ui = {
