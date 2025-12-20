@@ -4,9 +4,9 @@ vim.filetype.add {
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
 
--- vim.opt.tabstop     = 4  -- width of a hard tab character
--- vim.opt.shiftwidth  = 4  -- width used for autoindent
--- vim.opt.expandtab   = true  -- convert tabs to spaces
+vim.opt.tabstop     = 2  -- width of a hard tab character
+vim.opt.shiftwidth  = 2  -- width used for autoindent
+vim.opt.expandtab   = false  -- convert tabs to spaces
 
 vim.opt.colorcolumn = "80"
 vim.g.mapleader = ' '
